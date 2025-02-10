@@ -1,0 +1,323 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ffdd57;
+}
+
+/* Job Details Container */
+.job-details-container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+/* Main Content */
+.job-details-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Left Section */
+.job-details-left {
+  flex: 2;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.job-details-left:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.job-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.company-name {
+  font-size: 22px;
+  color: #444;
+  font-weight: 600;
+}
+
+.job-location {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.job-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Apply Button */
+.apply-button {
+  width: 35%;
+  padding: 12px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.apply-button:hover {
+  background: linear-gradient(to right, #0056b3, #003a80);
+}
+
+/* Job Details Right Section */
+.job-details-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Company Logo */
+.company-logo {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to right, #e6f0ff, #d6e4ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+  border-radius: 12px;
+}
+
+/* Related Jobs */
+.other-jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.job-card {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+  transition: 0.3s;
+}
+
+.job-card:hover {
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Job Card Logo */
+.job-card-logo {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(to right, #e6f0ff, #d6e4ff);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #007bff;
+  margin-right: 15px;
+  text-align: center;
+}
+
+/* Job Card Info */
+.job-card-info {
+  flex: 1;
+}
+
+.job-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.job-card-company,
+.job-card-location {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Apply Button for Job Cards */
+.job-card-apply {
+  padding: 8px 12px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.job-card-apply:hover {
+  background: linear-gradient(to right, #0056b3, #003a80);
+}
+
+/* Salary & Apply Section */
+.job-salary-apply {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.job-salary {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.job-card-salary {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #27ae60;
+  margin-top: 5px;
+}
+
+/* Return to Home Button */
+.return-button {
+  width: 100%;
+  padding: 15px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.return-button:hover {
+  background-color: #333;
+}
+
+/* Job Header */
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.job-header-info {
+  flex: 1;
+}
+
+/* Small Company Logo */
+.company-logo-small {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to right, #e6f0ff, #d6e4ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #007bff;
+  border-radius: 12px;
+  margin-left: 20px;
+}
+
+/* Modernized Styles */
+.modern-logo {
+  max-width: 80px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Highlight Section */
+.modern-highlight {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0052D4;
+}
+
+
+.modern-list {
+  padding-left: 0;
+  list-style-type: none;
+  display: flex; /* Arrange items in a single row */
+  gap: 15px; /* Spacing between items */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.modern-list li {
+  font-size: 16px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  background: #eef5ff; /* Light background for each item */
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out;
+  flex: 0 0 auto; /* Prevents items from shrinking */
+}
+
+.modern-list li i {
+  margin-right: 6px;
+  color: #0052D4;
+}
+
+/* Optional: Hover effect */
+.modern-list li:hover {
+  background: #d9e8ff;
+  transform: translateY(-2px);
+}

@@ -3,7 +3,7 @@ name: Build and deploy PHP app to Azure Web App
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch
+      - master  # Trigger on push to the main branch
   workflow_dispatch:  # Allow manual trigger
 
 env:

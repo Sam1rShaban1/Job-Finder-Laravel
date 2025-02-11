@@ -3,13 +3,13 @@ name: Build and deploy PHP app to Azure Web App
 on:
   push:
     branches:
-      - master  # Trigger on push to the master branch
+      - master  # Trigger on push to the main branch
   workflow_dispatch:  # Allow manual trigger
 
 env:
   AZURE_WEBAPP_NAME: Job-Finder-Laravel    # Your Azure Web App's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'Job-Finder-Laravel/'  # Path to your Laravel app (inside the repository)
-  PHP_VERSION: '8.3'                     # PHP version you're using
+  AZURE_WEBAPP_PACKAGE_PATH: './'  # Path to your Laravel app (root of the repository)
+  PHP_VERSION: '8.3'  # PHP version you're using
 
 permissions:
   contents: read  # Grant permission to read repository contents
@@ -71,6 +71,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: php-app
+
+      - name: Azure Login
+        uses: Azure/login@v2.2.0
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp

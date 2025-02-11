@@ -3,23 +3,23 @@ name: Build and deploy PHP app to Azure Web App
 on:
   push:
     branches:
-      - master  # Trigger on push to the main branch
+      - master  # Trigger on push to the master branch
   workflow_dispatch:  # Allow manual trigger
 
 env:
   AZURE_WEBAPP_NAME: job-finder-webapp    # Your Azure Web App's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'Job-Finder-Laravel'  # Path to your Laravel app (inside the repository)
+  AZURE_WEBAPP_PACKAGE_PATH: './Job-Finder-Laravel'  # Path to your Laravel app (inside the repository)
   PHP_VERSION: '8.3'                     # PHP version you're using
 
 permissions:
-  contents: read
+  contents: read  # Grant permission to read repository contents
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4  # Checkout repository code
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -55,11 +55,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: php-app
-          path: .
+          path: .  # Upload the entire repository as an artifact
 
   deploy:
     permissions:
-      contents: none
+      contents: none  # No need for contents permission in the deploy job
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -75,15 +75,15 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v2.2.0
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}  # Reference to the service principal credentials stored as a secret
+          creds: ${{ secrets.AZURE_CREDENTIALS }}  # Use service principal credentials stored as GitHub secrets
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}  # Use publish profile as a secret
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}  # Path to the Laravel app to be deployed
 
       - name: Azure Deployment complete
         run: echo "Deployment to Azure is complete!"

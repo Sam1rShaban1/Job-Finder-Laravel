@@ -3,34 +3,36 @@ name: Deploy to Azure
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch
+      - master
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Using the latest Ubuntu environment for the workflow
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Checkout the code from GitHub
+        uses: actions/checkout@v2
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'  # Setting PHP version to 8.3
+          php-version: '8.3'
 
       - name: Install dependencies
         run: |
-          composer install --no-interaction --prefer-dist  # Install Laravel dependencies
-          npm install  # If you're using NPM for frontend dependencies
-          npm run prod  # Run production build for assets (optional)
+          composer install --no-interaction --prefer-dist
+          npm install
+          npx vite@latest build
 
-      - name: Cache Composer dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
+      - name: Set up environment variables
+        run: |
+          echo "DB_CONNECTION=mysql" >> .env
+          echo "DB_HOST=${{ secrets.AZURE_DB_HOST }}" >> .env
+          echo "DB_PORT=3306" >> .env
+          echo "DB_DATABASE=${{ secrets.AZURE_DB_NAME }}" >> .env
+          echo "DB_USERNAME=${{ secrets.AZURE_DB_USER }}" >> .env
+          echo "DB_PASSWORD=${{ secrets.AZURE_DB_PASSWORD }}" >> .env
+          php artisan config:cache
 
       - name: Set up Azure CLI
         uses: azure/setup-azure-cli@v1
@@ -44,6 +46,11 @@ jobs:
       - name: Deploy to Azure Web App
         run: |
           az webapp up --name ${{ secrets.AZURE_APP_NAME }} --resource-group ${{ secrets.AZURE_RG }} --location ${{ secrets.AZURE_REGION }} --sku F1 --runtime "PHP|8.3" --src-path .
+
+      - name: Run database migrations
+        run: |
+          php artisan migrate --force
+          php artisan db:seed --force
 
       - name: Azure Deployment complete
         run: echo "Deployment to Azure is complete!"

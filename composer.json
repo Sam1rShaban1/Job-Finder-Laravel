@@ -8,7 +8,7 @@
     "require": {
         "php": "^8.3",
         "inertiajs/inertia-laravel": "^2.0",
-        "knuckleswtf/scribe": "*",
+        "knuckleswtf/scribe": "^4.39.0",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",

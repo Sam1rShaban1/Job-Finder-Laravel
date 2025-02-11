@@ -73,9 +73,14 @@ jobs:
           name: php-app
 
       - name: Azure Login
-        uses: Azure/login@v2.2.0
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}  # Use service principal credentials stored as GitHub secrets
+  uses: Azure/login@v2.2.0
+  with:
+    client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+    tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+    subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp

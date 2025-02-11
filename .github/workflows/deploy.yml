@@ -7,9 +7,8 @@ on:
   workflow_dispatch:  # Allow manual trigger
 
 env:
-  AZURE_WEBAPP_NAME: Job-Finder-Laravel
-    # Your Azure Web App's name
-  AZURE_WEBAPP_PACKAGE_PATH: './Job-Finder-Laravel'  # Path to your Laravel app (inside the repository)
+  AZURE_WEBAPP_NAME: Job-Finder-Laravel    # Your Azure Web App's name
+  AZURE_WEBAPP_PACKAGE_PATH: 'Job-Finder-Laravel/'  # Path to your Laravel app (inside the repository)
   PHP_VERSION: '8.3'                     # PHP version you're using
 
 permissions:

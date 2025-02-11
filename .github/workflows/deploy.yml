@@ -35,7 +35,7 @@ jobs:
           php artisan config:cache
 
       - name: Set up Azure CLI
-        uses: azure/setup-azure-cli@v1
+        uses: azure/setup-azure-cli@v2
         with:
           azcliversion: latest
 
